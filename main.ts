@@ -1,7 +1,8 @@
+makerbit.onIrButton(IrButton.Any, IrButtonAction.Released, function () {
+    DFRobotMaqueenPlus.mototStop(Motors.ALL)
+})
 makerbit.onIrButton(IrButton.Any, IrButtonAction.Pressed, function () {
     btn = makerbit.irButton()
-    serial.writeValue("data", btn)
-    music.playTone(262, music.beat(BeatFraction.Sixteenth))
     if (btn == 152) {
         DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 50)
     } else if (btn == 184) {
@@ -12,9 +13,9 @@ makerbit.onIrButton(IrButton.Any, IrButtonAction.Pressed, function () {
     } else if (btn == 66) {
         DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CCW, 50)
         DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 50)
+    } else {
+        basic.showString("" + (btn))
     }
-    basic.pause(400)
-    DFRobotMaqueenPlus.mototStop(Motors.ALL)
 })
 let btn = 0
 DFRobotMaqueenPlus.I2CInit()
